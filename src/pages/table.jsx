@@ -9,6 +9,7 @@ const data = [
   ];
 
 const Table = () => {
+
     return (
         <div className="table">
             <table>
