@@ -1,5 +1,6 @@
 import Result from "../components/result";
 import { useState } from "react";
+import { FormSelect } from "react-bootstrap"
 
 
 const data = [
@@ -33,17 +34,17 @@ const Results = () => {
     
     const promenaFiltera = e => {
         var newData = data;
-        if(e.target.value == "Svi rezultati"){
+        if(e.target.value === "Svi rezultati"){
             setDisplayedData(newData);
         } else {
-            newData = newData.filter(a => a.team1.name == e.target.value || a.team2.name == e.target.value);
+            newData = newData.filter(a => a.team1.name === e.target.value || a.team2.name === e.target.value);
             setDisplayedData(newData);
         }
     }
 
     return(
         <div>
-            <select id="filter" onChange={promenaFiltera}>
+            <FormSelect id="filter" onChange={promenaFiltera} size="lg" style={{textAlign: "center", width: "40%", marginLeft: "25px"}}>
                 <option key="Svi rezultati">Svi rezultati</option>
                 <option>ATUSS</option>
                 <option>Ekonomski fakultet</option>
@@ -52,7 +53,7 @@ const Results = () => {
                 <option>Fakultet sporta i fizickog vaspitanja</option>
                 <option>Medicinski fakultet</option>
                 <option>Stomatoloski fakultet</option>
-            </select>
+            </FormSelect>
             <div className="results">
                 {displayedData.map((row) => (
                     <Result row = {row}/>

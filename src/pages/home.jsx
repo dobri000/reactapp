@@ -1,3 +1,6 @@
+import {Table} from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const data = [
     {position:1, team:"Fakultet organizacionih nauka", wins:6, losses:0, points:16, setsWon:12, setsLost:2},
     {position:2, team:"Elektrotehnicki fakultet", wins:4, losses:2, points:13, setsWon:10, setsLost:5},
@@ -8,20 +11,20 @@ const data = [
     {position:7, team:"Ekonomski fakultet", wins:0, losses:6, points:0, setsWon:0, setsLost:12}
   ];
 
-const Table = () => {
+const Home = () => {
 
     return (
-        <div className="table">
-            <table>
+        <div className="table" style={{display : "flex", alignItems : "center", justifyContent : "center", backgroundColor: "rgb(0,0,0,0.45)", marginTop: "50px"}}>
+            <Table style={{color: "white", fontWeight: "bold"}}>
                 <thead>
                     <tr>
-                        <th>Position</th>
-                        <th>Team</th>
-                        <th>Wins</th>
-                        <th>Losses</th>
-                        <th>Sets won</th>
-                        <th>Sets lost</th>
-                        <th>Points</th>
+                        <th>Pozicija</th>
+                        <th>Tim</th>
+                        <th>Pobeda</th>
+                        <th>Poraza</th>
+                        <th>Osvojenih setova</th>
+                        <th>Izgubljenih setova</th>
+                        <th>Poena</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,9 +42,9 @@ const Table = () => {
                         )
                     )}
                 </tbody>
-            </table>
+            </Table>
         </div>
     );
 }
 
-export default Table;
+export default Home;
