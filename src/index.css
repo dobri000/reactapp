@@ -20,3 +20,21 @@ code {
 img {
   height: 180px;
 }
+
+form {
+  display: grid;
+  grid-template-columns: 30em;
+  margin-left: 50px;
+  margin-top: 50px;
+  border: solid 3px;
+  border-radius: 10%;
+  background-color: rgb(0, 0, 0, 0.3);
+  width: 31em;
+}
+
+form input {
+  margin: 20px;
+  height: 40px;
+  border-radius: 20px;
+  text-align: center;
+}
