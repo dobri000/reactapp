@@ -38,3 +38,11 @@ form input {
   border-radius: 20px;
   text-align: center;
 }
+
+th:hover {
+  cursor: pointer;
+}
+
+#headTim:hover{
+  cursor: default;
+}

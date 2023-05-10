@@ -1,5 +1,6 @@
 import {Table} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from "react";
 
 const data = [
     {position:1, team:"Fakultet organizacionih nauka", wins:6, losses:0, points:16, setsWon:12, setsLost:2},
@@ -13,23 +14,103 @@ const data = [
 
 const Home = () => {
 
+    const [displayedData, setDisplayedData] = useState(data);
+    const [positionSorted, setPositionSorted] = useState(true);
+    const [winsSorted, setWinsSorted] = useState(true);
+    const [lossesSorted, setLossesSorted] = useState(true);
+    const [setsWonSorted, setSetsWonSorted] = useState(true);
+    const [setsLostSorted, setSetsLostSorted] = useState(true);
+    const [pointsSorted, setPointsSorted] = useState(true);
+    const sortPosition = ()=> {
+        let newData;
+        if(positionSorted){
+            newData = data.sort((a,b) =>  (a.position-b.position));
+            setDisplayedData(newData);
+            setPositionSorted(false);
+        } else {
+            newData = data.sort((a,b) =>  (b.position-a.position));
+            setDisplayedData(newData);
+            setPositionSorted(true);
+        }
+    }
+    const sortWins = ()=> {
+        let newData;
+        if(winsSorted){
+            newData = data.sort((a,b) =>  (a.wins-b.wins));
+            setDisplayedData(newData);
+            setWinsSorted(false);
+        } else {
+            newData = data.sort((a,b) =>  (b.wins-a.wins));
+            setDisplayedData(newData);
+            setWinsSorted(true);
+        }
+    }
+    const sortLosses = ()=> {
+        let newData;
+        if(lossesSorted){
+            newData = data.sort((a,b) =>  (a.losses-b.losses));
+            setDisplayedData(newData);
+            setLossesSorted(false);
+        } else {
+            newData = data.sort((a,b) =>  (b.losses-a.losses));
+            setDisplayedData(newData);
+            setLossesSorted(true);
+        }
+    }
+    const sortSetsWon = ()=> {
+        let newData;
+        if(setsWonSorted){
+            newData = data.sort((a,b) =>  (a.setsWon-b.setsWon));
+            setDisplayedData(newData);
+            setSetsWonSorted(false);
+        } else {
+            newData = data.sort((a,b) =>  (b.setsWon-a.setsWon));
+            setDisplayedData(newData);
+            setSetsWonSorted(true);
+        }
+    }
+    const sortSetsLost = ()=> {
+        let newData;
+        if(setsLostSorted){
+            newData = data.sort((a,b) =>  (a.setsLost-b.setsLost));
+            setDisplayedData(newData);
+            setSetsLostSorted(false);
+        } else {
+            newData = data.sort((a,b) =>  (b.setsLost-a.setsLost));
+            setDisplayedData(newData);
+            setSetsLostSorted(true);
+        }
+    }
+    const sortPoints = ()=> {
+        let newData;
+        if(pointsSorted){
+            newData = data.sort((a,b) =>  (a.points-b.points));
+            setDisplayedData(newData);
+            setPointsSorted(false);
+        } else {
+            newData = data.sort((a,b) =>  (b.points-a.points));
+            setDisplayedData(newData);
+            setPointsSorted(true);
+        }
+    }
+
     return (
         <div className="table" style={{display : "flex", alignItems : "center", justifyContent : "center", backgroundColor: "rgb(0,0,0,0.45)", marginTop: "50px"}}>
             <Table style={{color: "white", fontWeight: "bold"}}>
                 <thead>
                     <tr>
-                        <th>Pozicija</th>
-                        <th>Tim</th>
-                        <th>Pobeda</th>
-                        <th>Poraza</th>
-                        <th>Osvojenih setova</th>
-                        <th>Izgubljenih setova</th>
-                        <th>Poena</th>
+                        <th onClick={sortPosition}>Pozicija</th>
+                        <th id="headTim">Tim</th>
+                        <th onClick={sortWins}>Pobeda</th>
+                        <th onClick={sortLosses}>Poraza</th>
+                        <th onClick={sortSetsWon}>Osvojenih setova</th>
+                        <th onClick={sortSetsLost}>Izgubljenih setova</th>
+                        <th onClick={sortPoints}>Poena</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        data.map((row) => (
+                        displayedData.map((row) => (
                             <tr>
                                 <td>{row.position}</td>
                                 <td>{row.team}</td>
